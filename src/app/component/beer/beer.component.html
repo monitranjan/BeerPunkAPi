@@ -1,0 +1,11 @@
+<div *ngFor="let beer of beers">
+<div class="card">
+  <img [src]="beer.image_url ? beer.image_url : 'https://picsum.photos/200'" alt="image" style="height:100px; width:70%">
+  <div class="container">
+    <h4><b>{{ beer.name }}</b></h4>
+    <p>{{ beer.description }}</p>
+  </div>
+  <button class="button" type="button" (click)="getRandomBeer()">Another Beer</button>
+  <button class="button"type="button" (click)="getNonAlcoholicBeer()">Random non alcoholic Beer</button>
+</div>
+</div>

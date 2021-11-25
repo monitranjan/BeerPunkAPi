@@ -1,0 +1,52 @@
+<form
+  #searchForm="ngForm"
+  (ngSubmit)="searchForm.form.valid && searchBeer(searchForm)"
+>
+  <h3>Search Beer</h3>
+  <div class="form-group">
+    <input
+      type="text"
+      name="name"
+      [(ngModel)]="name"
+      required
+    />
+  </div>
+  <div class="form-control">
+    <label class="radio-inline">
+      <input
+        type="radio"
+        name="type"
+        value="by Name"
+        checked
+        [(ngModel)]="type"
+      />
+      by Name
+    </label>
+    <label class="radio-inline">
+      <input
+        type="radio"
+        name="type"
+        value="by description"
+        [(ngModel)]="type"
+      />
+      by description
+    </label>
+  </div>
+  <button [disabled]="searchForm.invalid" class="btn btn-primary" type="submit">Submit</button>
+</form>
+
+<div *ngFor="let beer of beers">
+  <div class="card">
+    <img
+      [src]="beer.image_url ? beer.image_url : 'https://picsum.photos/200'"
+      alt="image"
+      style="height:100px; width:70%"
+    />
+    <div class="container">
+      <h4>
+        <b>{{ beer.name }}</b>
+      </h4>
+      <p>{{ beer.description }}</p>
+    </div>
+  </div>
+</div>
